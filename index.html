@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Ciabatta — Panificación artesanal a mano</title>
+  <meta name="description" content="Ciabatta casera, horneada con fermentación lenta y amor. Hecha a mano, sin conservantes. Pedí la tuya." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#FAF7F2',
+            crust: '#C4956A',
+            miga: '#E8D5B7',
+            pan: '#F5EFE6',
+            tinta: '#2D2A26',
+            ceniza: '#7A756E',
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .hero-bg {
+      background: linear-gradient(rgba(45,42,38,0.45) 0%, rgba(45,42,38,0.25) 100%),
+        url('https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=1600&q=85') center/cover no-repeat;
+    }
+    .process-card:hover .process-num {
+      transform: scale(1.15);
+      background-color: #C4956A;
+      color: #FAF7F2;
+    }
+    .sandwich-card:hover img {
+      transform: scale(1.05);
+    }
+    .sandwich-card:hover {
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    }
+    .cta-primary {
+      background-color: #C4956A;
+      transition: background-color 0.2s ease, transform 0.15s ease;
+    }
+    .cta-primary:hover {
+      background-color: #b07f55;
+      transform: translateY(-1px);
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-cream font-sans text-tinta antialiased">
+
+  <!-- NAV -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-cream/90 backdrop-blur-md border-b border-miga/50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="font-serif text-2xl font-semibold tracking-tight text-tinta">
+        La <span class="text-crust">Ciabatta</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-ceniza">
+        <a href="#proceso" class="hover:text-tinta transition-colors">El Proceso</a>
+        <a href="#recetas" class="hover:text-tinta transition-colors">¿Qué hacés?</a>
+        <a href="#pedidos" class="hover:text-tinta transition-colors">Pedidos</a>
+      </div>
+      <a href="https://wa.me/54911TU_NUMERO?text=Hola!%20Quiero%20pedir%20ciabatta" target="_blank"
+         class="cta-primary text-white text-sm font-semibold px-5 py-2.5 rounded-full">
+        Pedí la tuya
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero-bg min-h-screen flex items-center justify-center relative">
+    <div class="max-w-4xl mx-auto px-6 text-center text-white">
+      <p class="text-sm uppercase tracking-[0.25em] font-medium mb-4 opacity-90">Panificación artesanal · Fermentación lenta · Sin conservantes</p>
+      <h1 class="font-serif text-5xl md:text-7xl font-bold leading-tight mb-6">
+        Ciabatta<br /><em class="font-normal">hecha con manos</em>
+      </h1>
+      <p class="text-lg md:text-xl font-light max-w-xl mx-auto mb-10 opacity-90 leading-relaxed">
+        Masa madre, fermentación de 24 horas y horneado fresco.<br />
+        Cada unidad es única — como tiene que ser.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#pedidos" class="cta-primary text-white font-semibold px-8 py-4 rounded-full text-lg">
+          Hacer un pedido
+        </a>
+        <a href="#proceso" class="border border-white/80 text-white font-medium px-8 py-4 rounded-full text-lg hover:bg-white/10 transition-colors">
+          Conocé el proceso
+        </a>
+      </div>
+    </div>
+    <!-- scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/70 text-xs uppercase tracking-widest">
+      <span>Scroll</span>
+      <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+    </div>
+  </section>
+
+  <!-- INTRO / VALUE PROPS -->
+  <section class="py-20 md:py-28 bg-cream">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16 fade-in">
+        <p class="text-crust uppercase tracking-[0.2em] text-xs font-semibold mb-3">Nuestra Ciabatta</p>
+        <h2 class="font-serif text-4xl md:text-5xl font-bold text-tinta mb-5">
+          Tres cosas que la hacen diferente
+        </h2>
+        <p class="text-ceniza text-lg max-w-2xl mx-auto">
+          No es solo pan. Es el resultado de respetar el tiempo, la masa y el oficio.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8 md:gap-12">
+        <div class="fade-in text-center p-8 bg-pan rounded-2xl border border-miga/60 hover:border-crust/40 transition-colors">
+          <div class="w-14 h-14 bg-crust/15 rounded-full flex items-center justify-center mx-auto mb-5">
+            <svg class="w-7 h-7 text-crust" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4h16v2H4V4zm0 6h16v2H4v-2zm0 6h10v2H4v-2z"/></svg>
+          </div>
+          <h3 class="font-serif text-xl font-semibold mb-3">Miga abierta</h3>
+          <p class="text-ceniza text-sm leading-relaxed">Alta hidratación, burbujas grandes e irregulares. Eso se traduce en una miga que atrapa aceites, salsas y sabor.</p>
+        </div>
+        <div class="fade-in text-center p-8 bg-pan rounded-2xl border border-miga/60 hover:border-crust/40 transition-colors" style="transition-delay:0.1s">
+          <div class="w-14 h-14 bg-crust/15 rounded-full flex items-center justify-center mx-auto mb-5">
+            <svg class="w-7 h-7 text-crust" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>
+          </div>
+          <h3 class="font-serif text-xl font-semibold mb-3">Corteza crujiente</h3>
+          <p class="text-ceniza text-sm leading-relaxed">Dorado profundo, firme al morder, aroma a tueste. Se forma gracias al horneado a alta temperatura en el horno de casa.</p>
+        </div>
+        <div class="fade-in text-center p-8 bg-pan rounded-2xl border border-miga/60 hover:border-crust/40 transition-colors" style="transition-delay:0.2s">
+          <div class="w-14 h-14 bg-crust/15 rounded-full flex items-center justify-center mx-auto mb-5">
+            <svg class="w-7 h-7 text-crust" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="font-serif text-xl font-semibold mb-3">Fermentación lenta</h3>
+          <p class="text-ceniza text-sm leading-relaxed">24 horas de frío. Sin aceleradores. El tiempo desarrolla sabores complejos que no se pueden fabricar de otra manera.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="proceso" class="py-20 md:py-28 bg-pan">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16 fade-in">
+        <p class="text-crust uppercase tracking-[0.2em] text-xs font-semibold mb-3">El Proceso</p>
+        <h2 class="font-serif text-4xl md:text-5xl font-bold text-tinta mb-4">
+          Así sale cada ciabatta
+        </h2>
+        <p class="text-ceniza text-lg max-w-xl mx-auto">
+          Desde la mezcla hasta tu mesa, no hay shortcuts. Así funciona cuando hacés pan de verdad.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <!-- Step 1 -->
+        <div class="process-card fade-in bg-cream rounded-2xl overflow-hidden border border-miga/50">
+          <div class="h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80"
+                 alt="Mezcla de harina y agua" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="p-6">
+            <span class="process-num inline-flex items-center justify-center w-8 h-8 rounded-full bg-miga text-crust font-bold text-sm mb-3 transition-all duration-300">1</span>
+            <h3 class="font-serif text-lg font-semibold mb-2">Mezcla</h3>
+            <p class="text-ceniza text-sm leading-relaxed">Harina de trigo de buena molienda, agua, sal y una pizca de fermento. Sin aditivos, sin improve.</p>
+          </div>
+        </div>
+        <!-- Step 2 -->
+        <div class="process-card fade-in bg-cream rounded-2xl overflow-hidden border border-miga/50" style="transition-delay:0.1s">
+          <div class="h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600&q=80"
+                 alt="Fermentación lenta" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="p-6">
+            <span class="process-num inline-flex items-center justify-center w-8 h-8 rounded-full bg-miga text-crust font-bold text-sm mb-3 transition-all duration-300">2</span>
+            <h3 class="font-serif text-lg font-semibold mb-2">Fermentación</h3>
+            <p class="text-ceniza text-sm leading-relaxed">24 horas en heladera. La masa toma complejidad, desarrollo de sabor y esa textura aerada característica.</p>
+          </div>
+        </div>
+        <!-- Step 3 -->
+        <div class="process-card fade-in bg-cream rounded-2xl overflow-hidden border border-miga/50" style="transition-delay:0.2s">
+          <div class="h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=600&q=80"
+                 alt="División y moldeado" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="p-6">
+            <span class="process-num inline-flex items-center justify-center w-8 h-8 rounded-full bg-miga text-crust font-bold text-sm mb-3 transition-all duration-300">3</span>
+            <h3 class="font-serif text-lg font-semibold mb-2">Moldeado</h3>
+            <p class="text-ceniza text-sm leading-relaxed">Se divide a mano, se le da forma de zapato (ciabatta = chinela en italiano). Sin máquinas, sin templado.</p>
+          </div>
+        </div>
+        <!-- Step 4 -->
+        <div class="process-card fade-in bg-cream rounded-2xl overflow-hidden border border-miga/50" style="transition-delay:0.3s">
+          <div class="h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=600&q=80"
+                 alt="Horneado fresco" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="p-6">
+            <span class="process-num inline-flex items-center justify-center w-8 h-8 rounded-full bg-miga text-crust font-bold text-sm mb-3 transition-all duration-300">4</span>
+            <h3 class="font-serif text-lg font-semibold mb-2">Horneado</h3>
+            <p class="text-ceniza text-sm leading-relaxed">Horno fuerte, vapor al inicio para desarrollar la corteza. Sale dorada, crocante y con aroma real.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SANDWICH IDEAS -->
+  <section id="recetas" class="py-20 md:py-28 bg-cream">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16 fade-in">
+        <p class="text-crust uppercase tracking-[0.2em] text-xs font-semibold mb-3">Inspiración</p>
+        <h2 class="font-serif text-4xl md:text-5xl font-bold text-tinta mb-4">
+          ¿Qué hacés con una ciabatta?
+        </h2>
+        <p class="text-ceniza text-lg max-w-xl mx-auto">
+          Su textura aguantó todo — desde el sánguch argentino hasta el caprese italiano.
+          Acá van algunas ideas para sacarle el máximo.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Sanguch de Bondiola -->
+        <div class="sandwich-card fade-in bg-pan rounded-2xl overflow-hidden border border-miga/50 transition-all duration-300">
+          <div class="h-52 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=600&q=80"
+                 alt="Sánguch de bondiola" class="w-full h-full object-cover transition-transform duration-500" loading="lazy" />
+          </div>
+          <div class="p-6">
+            <span class="inline-block text-xs font-semibold text-crust bg-crust/10 px-2 py-1 rounded-full mb-2">Clásico argentino</span>
+            <h3 class="font-serif text-xl font-semibold mb-2">Bondiola + Chimichurri</h3>
+            <p class="text-ceniza text-sm leading-relaxed mb-4">
+              Fatía de bondiola ahumada, generosa capa de chimichurri, tomate en rodajas y una drizzle de aceite de oliva. El sánguch de quiosco fatto in casa.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-miga/50 text-tinta px-2 py-1 rounded">Bondiola</span>
+              <span class="text-xs bg-miga/50 text-tinta px-2 py-1 rounded">Chimichurri</span>
+              <span class="text-xs bg-miga/50 text-tinta px-2 py-1 rounded">Tomate</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Choripán -->
+        <div class="sandwich-card fade-in bg-pan rounded-2xl overflow-hidden border border-miga/50 transition-all duration-300" style="transition-delay:0.1s">
+          <div class="h-52 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80"
+                 alt="Choripán" class="w-full h-full object-cover transition-transform duration-500" loading="lazy" />
+          </div>
+          <div class="p-6">
+            <span class="inline-block text-xs font-semibold text-crust bg-crust/10 px-2 py-1 rounded-full mb-2">A la parrilla</span>
+            <h3 class="font-serif text-xl font-semibold mb-2">Choripán</h3>
+            <p class="text-ceniza text-sm leading-relaxed mb-4">
+              Chorizo argentino partido al medio, asado directo. Ciabatta en vez de baguette — más miga para absorber el chimichurri y la salsa criolla.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-miga/50 text-tinta px-2 py-1 rounded">Chorizo</span>
+              <span class="text-xs bg-miga/50 text-tinta px-2 py-1 rounded">Chimichurri</span>
+              <span class="text-xs bg-miga/50 text-tinta px-2 py-1 rounded">Salsa criolla</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Caprese -->
+        <div class="sandwich-card fade-in bg-pan rounded-2xl overflow-hidden border border-miga/50 transition-all duration-300" style="transition-delay:0.2s">
+          <div class="h-52 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1529312266912-b33cf6227e24?w=600&q=80"
+                 alt="Caprese" class="w-full h-full object-cover transition-transform duration-500" loading="lazy" />
+          </div>
+          <div class="p-6">
+            <span class="inline-block text-xs font-semibold text-crust bg-crust/10 px-2 py-1 rounded-full mb-2">Italiano</span>
+            <h3 class="font-serif text-xl font-semibold mb-2">Caprese</h3>
+            <p class="text-ceniza text-sm leading-relaxed mb-4">
+              Mozzarella fresca, tomate maduro, albahaca, drizzle de aceite de oliva y una gota de balsámico. Simple, pero con ciabatta es otro nivel.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-miga/50 text-tinta px-2 py-1 rounded">Mozzarella</span>
+              <span class="text-xs bg-miga/50 text-tinta px-2 py-1 rounded">Tomate</span>
+              <span class="text-xs bg-miga/50 text-tinta px-2 py-1 rounded">Albahaca</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Milanesa -->
+        <div class="sandwich-card fade-in bg-pan rounded-2xl overflow-hidden border border-miga/50 transition-all duration-300" style="transition-delay:0.3s">
+          <div class="h-52 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=600&q=80"
+                 alt="Milanesa" class="w-full h-full object-cover transition-transform duration-500" loading="lazy" />
+          </div>
+          <div class="p-6">
+            <span class="inline-block text-xs font-semibold text-crust bg-crust/10 px-2 py-1 rounded-full mb-2">Argentina</span>
+            <h3 class="font-serif text-xl font-semibold mb-2">Milanesa Sándwich</h3>
+            <p class="text-ceniza text-sm leading-relaxed mb-4">
+              Milanesa de nalga bien fina, empanizado dorado y crocante. Lechina, tomate, mayonesa. La versión casera del sándwich de milanesa.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-miga/50 text-tinta px-2 py-1 rounded">Milanesa</span>
+              <span class="text-xs bg-miga/50 text-tinta px-2 py-1 rounded">Lechina</span>
+              <span class="text-xs bg-miga/50 text-tinta px-2 py-1 rounded">Mayo</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chivito -->
+        <div class="sandwich-card fade-in bg-pan rounded-2xl overflow-hidden border border-miga/50 transition-all duration-300" style="transition-delay:0.4s">
+          <div class="h-52 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1509721434272-b79147e0e708?w=600&q=80"
+                 alt="Chivito" class="w-full h-full object-cover transition-transform duration-500" loading="lazy" />
+          </div>
+          <div class="p-6">
+            <span class="inline-block text-xs font-semibold text-crust bg-crust/10 px-2 py-1 rounded-full mb-2">Uruguayo</span>
+            <h3 class="font-serif text-xl font-semibold mb-2">Chivito</h3>
+            <p class="text-ceniza text-sm leading-relaxed mb-4">
+              La versión completa: carne vacuna, jamón cocido, mozzarella, tocino, huevo, tomate, lechuga y aceitunas. Un sánguch que no se banca cualquier pan.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-miga/50 text-tinta px-2 py-1 rounded">Carne</span>
+              <span class="text-xs bg-miga/50 text-tinta px-2 py-1 rounded">Jamón</span>
+              <span class="text-xs bg-miga/50 text-tinta px-2 py-1 rounded">Bacon</span>
+              <span class="text-xs bg-miga/50 text-tinta px-2 py-1 rounded">Huevo</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tostado de Provolone -->
+        <div class="sandwich-card fade-in bg-pan rounded-2xl overflow-hidden border border-miga/50 transition-all duration-300" style="transition-delay:0.5s">
+          <div class="h-52 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1481070555726-e2fe835c0be7?w=600&q=80"
+                 alt="Tostado provolone" class="w-full h-full object-cover transition-transform duration-500" loading="lazy" />
+          </div>
+          <div class="p-6">
+            <span class="inline-block text-xs font-semibold text-crust bg-crust/10 px-2 py-1 rounded-full mb-2">Tostado</span>
+            <h3 class="font-serif text-xl font-semibold mb-2">Provolone + Oregano</h3>
+            <p class="text-ceniza text-sm leading-relaxed mb-4">
+              Provolone grueso sobre mitades de ciabatta, orégano, Aceite de oliva y chili flakes. Gratinar 3 minutos y tenés el tostado perfecto.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs bg-miga/50 text-tinta px-2 py-1 rounded">Provolone</span>
+              <span class="text-xs bg-miga/50 text-tinta px-2 py-1 rounded">Oregano</span>
+              <span class="text-xs bg-miga/50 text-tinta px-2 py-1 rounded">AOVE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / ORDER -->
+  <section id="pedidos" class="py-20 md:py-28 bg-tinta text-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5">
+      <img src="https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=1600&q=50"
+           alt="" class="w-full h-full object-cover" />
+    </div>
+    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+      <div class="fade-in">
+        <p class="text-crust uppercase tracking-[0.2em] text-xs font-semibold mb-3">Pedidos</p>
+        <h2 class="font-serif text-4xl md:text-5xl font-bold mb-6">
+          Llevate ciabatta fresca<br />a tu casa
+        </h2>
+        <p class="text-white/70 text-lg max-w-xl mx-auto mb-4 leading-relaxed">
+          Se hornean en pequeños lotes.了一般最多 once por semana, dependiendo de la demanda. <strong class="text-white">Hay que pedir con anticipación.</strong>
+        </p>
+        <p class="text-white/50 text-sm mb-10">
+          Zona de entrega: Capital Federal y alrededores · También podés retirarlas por Flores
+        </p>
+        <a href="https://wa.me/54911TU_NUMERO?text=Hola!%20Quiero%20pedir%20ciabatta.%20¿Hay%20disponibilidad%20esta%20semana?"
+           target="_blank"
+           class="inline-flex items-center gap-3 bg-crust hover:bg-crust/90 text-white font-semibold text-lg px-10 py-5 rounded-full transition-all duration-200 hover:scale-105">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Escribinos por WhatsApp
+        </a>
+        <p class="text-white/40 text-sm mt-6">
+          Respuesta en menos de 2 horas · No usamos robots
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-pan border-t border-miga/50 py-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+          <a href="#" class="font-serif text-xl font-semibold text-tinta">
+            La <span class="text-crust">Ciabatta</span>
+          </a>
+          <p class="text-ceniza text-sm mt-1">Panificación artesanal a mano · Buenos Aires</p>
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="https://instagram.com/tu_usuario" target="_blank" aria-label="Instagram"
+             class="w-10 h-10 rounded-full bg-miga/50 flex items-center justify-center text-ceniza hover:text-crust hover:bg-crust/10 transition-all">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="border-t border-miga/50 mt-8 pt-8 text-center text-ceniza text-xs">
+        <p>&copy; 2025 La Ciabatta · Buenos Aires, Argentina · Hecho con amor y masa madre</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- INTERSECTION OBSERVER FOR FADE-IN -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
